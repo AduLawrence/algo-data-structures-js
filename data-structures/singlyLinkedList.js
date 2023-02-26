@@ -36,6 +36,47 @@ class SinglyLinkedList {
 
     /**
      * 
+     * @param {Node} node 
+     * @param {Number} pos 
+     * @returns {Number|underfine}
+     */
+    insertAt(node, pos)
+    {
+        if(pos > this.length || pos < 0){
+            return undefined;
+        }
+
+        if(pos === this.length)
+        {
+            return this.insert(node);
+        }
+
+        if(pos === 0){
+            return this.unshift(node);
+        }
+
+        let currentNode = this.head;
+        let previousNode = null;
+        let count = -1;
+
+        while(currentNode != null){
+            count ++;
+
+            if(count === pos){
+                node.next = currentNode;
+                previousNode.next = node;
+                break;
+            }
+
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+
+        return ++ this.length;
+    }
+
+    /**
+     * 
      * @param {*} val 
      * @returns {Number}
      */
