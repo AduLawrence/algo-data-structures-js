@@ -136,6 +136,41 @@ class SinglyLinkedList {
         return ++ this.length;
     }
 
+    remove(pos)
+    {
+        if(pos < 0 || pos > this.length-1)
+        {
+            return undefined;
+        }
+
+        if(pos === 0){
+            return this.shift();
+        }
+
+        if(pos === this.length - 1)
+        {
+            return this.pop();
+        }
+
+        let currentNode = this.head;
+        let previousNode = null;
+        let count = -1;
+
+        while(currentNode.next != null)
+        {
+            count ++;
+            if(count === pos){
+                previousNode.next = currentNode.next;
+                break;
+            }
+
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+
+        return -- this.length;
+    }
+
     /**
      * 
      * @returns {Number|undefined} length
